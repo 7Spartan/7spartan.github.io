@@ -25,57 +25,60 @@
         <section id="about">
             <p>I enjoy solving engineering problems.</p>
         </section>
-
+ 8 hbn  
         <section id="Projects">
             <h2>Projects</h2>
             <div class="carousel">  
                 <div class="project-card">
-                    <img src="image1.jpg" alt="Project 1">
+                    <img src="resources/EndoGITrain.jpg" alt="Project 1">
                     <h3>Endoscopy surgical simulator</h3>
                     <p>This device replicates a patient and has orifaces for trainee doctors to insert endoscope, navigate around the simulated GI organs and perform diagnostic and theraputic procedures</p>
-                    <a href="#">Link to Project</a>
+                    <p>Lead the mechatronics design</p>
+                    <p>Developed several control algorithms</p>
+                    <p>MCU: Dualcore Ti F28M36 (TiRTOS), NXP MIMXRT1062 (FreeRTOS)</p>
                 </div>
                 <div class="project-card">
                     <img src="image1.jpg" alt="Project 1">
-                    <h3>force sensing jig</h3>
-                    <p>Mechatronic system used to measure the forces being exerted by the doctor on an endoscope instrument sampling at 200hz.</p>
+                    <h3>force logging device</h3>
+                    <p>Device used to measure the forces being exerted by the doctor on an endoscope insertion tube.</p>
                     <a href="#">Link to Project</a>
                 </div>
                 <div class="project-card">
-                    <img src="image2.jpg" alt="Project 2">
-                    <h3>Motor controller PCB</h3>
-                    <p>This PCB is used to control 6 8N-m servo motors that drive a parallel 6DOF simulator platform</p>
-                    <a href="#">Link to Project</a>
+                    <img src="resources/Simrig_controller_pcb.jpg" alt="Project 2">
+                    <img src="resources/Simrig_controller_schematic.jpg" alt="Project 2">
+                    <a href="https://github.com/7Spartan/simrig_PCB" target="_blank"> <h3>Simrig controller PCB</h3> </a>
+                    <p>This PCB is used to control 6 8N-m servo motors while communicating with a PC running the simulation</p>
+                </div>
+                <div class="project-card">
+                    <a href="https://github.com/7Spartan/simrigFW" target="_blank"> <h3>Simrig controller Firmware</h3> </a>
+                    <p>STM32 baremetal implementation. Control of 6 8N-m servo motors while tracking the position of simrig using an IMU</p>
                 </div>
                 <div class="project-card">
                     <img src="image3.jpg" alt="Project 3">
                     <h3>UART data collection and analysis tool</h3>
-                    <p>Python tool used to communicate with a custom M3 core to collect, process and visualize the data</p>
+                    <p>Python tool used to communicate with M3 core to collect, process and visualize the data</p>
                     <a href="#">Link to Project</a>
                 </div>
                 <div class="project-card">
                     <img src="image4.jpg" alt="Project 4">
-                    <h3>Autonomus driving simulator</h3>
+                    <a href="https://github.com/7Spartan/Track" target="_blank"><h3>Autonomus driving simulator</h3></a>
                     <p>Buit an ML model using behavioural cloning to drive a car in the Udacity driving simulator application.</p>
-                    <a href="#">Link to Project</a>
                 </div>
                 <div class="project-card">
                     <img src="image4.jpg" alt="Project 4">
-                    <h3>Real time concrete crack detection tool</h3>
+                    <a href="https://github.com/7Spartan/Crack-detection" target="_blank"><h3>Real time concrete crack detection tool</h3></a>
                     <p>Python application running a fine tuned pretrained model to detect defects on concrete surfaces.</p>
-                    <a href="#">Link to Project</a>
                 </div>
                 <div class="project-card">
                     <img src="image5.jpg" alt="Project 5">
-                    <h3>Auth server</h3>
+                    <a href="https://github.com/7Spartan/vo_server" target="_blank"><h3>Auth server</h3></a>
                     <p>Node Js based webserver used to register and authenticate users. Accepts http requests from embedded devices</p>
-                    <a href="#">Link to Project</a>
+
                 </div>
                 <div class="project-card">
                     <img src="image6.jpg" alt="Project 6">
-                    <h3>Webscraping bot</h3>
+                    <a href="https://github.com/7Spartan/scraping_tool" target="_blank"><h3>Webscraping bot</h3></a>
                     <p>Python web app to scrape craigslist for good deals to purchase second hand cars</p>
-                    <a href="#">Link to Project</a>
                 </div>
 
             </div>
