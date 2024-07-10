@@ -67,7 +67,9 @@ section {
 }
 
 .project-card p {
-    word-wrap: break-word; /* Ensure long words break and wrap to the next line */
+    overflow-wrap: break-word; /* Break long words to fit within the container */
+    white-space: normal;       /* Allow text to wrap normally */
+    word-wrap: break-word;     /* Break long words to fit within the container (legacy support) */
 }
 
 .project-card img {
