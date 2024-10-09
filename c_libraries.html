@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Collection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sorting.html">Sorting Algorithms</a></li>
+            <li><a href="search.html">Search Algorithms</a></li>
+            <li><a href="graph.html">Graph Algorithms</a></li>
+            <!-- Add more links as needed -->
+        </ul>
+    </div>
+    <div id="main-content">
+    <header>
+        <h1>Algorithm Collection</h1>
+    </header>
+    <main>
+        <section id="sorting-algorithms">
+            <h2>Sorting Algorithms</h2>
+            <h3>Bubble Sort</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+
+void bubbleSort(int arr[], int n) {
+    int i, j, temp;
+    for (i = 0; i < n-1; i++) {
+        for (j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                // Swap
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    bubbleSort(arr, n);
+    printf("Sorted array: \n");
+    for (int i=0; i < n; i++)
+        printf("%d ", arr[i]);
+    return 0;
+}
+            </code></pre>
+
+            <h3>Quick Sort</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition (int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    int arr[] = {10, 7, 8, 9, 1, 5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    quickSort(arr, 0, n-1);
+    printf("Sorted array: \n");
+    for (int i=0; i < n; i++)
+        printf("%d ", arr[i]);
+    return 0;
+}
+            </code></pre>
+        </section>
+
+        <section id="search-algorithms">
+            <h2>Search Algorithms</h2>
+            <h3>Binary Search</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+
+int binarySearch(int arr[], int l, int r, int x) {
+    while (l <= r) {
+        int m = l + (r - l) / 2;
+
+        if (arr[m] == x)
+            return m;
+
+        if (arr[m] < x)
+            l = m + 1;
+        else
+            r = m - 1;
+    }
+
+    return -1;
+}
+
+int main() {
+    int arr[] = {2, 3, 4, 10, 40};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int x = 10;
+    int result = binarySearch(arr, 0, n-1, x);
+    (result == -1) ? printf("Element is not present in array")
+                   : printf("Element is present at index %d", result);
+    return 0;
+}
+            </code></pre>
+        </section>
+
+        <section id="graph-algorithms">
+            <h2>Graph Algorithms</h2>
+            <h3>Depth-First Search (DFS)</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX 100
+
+int adj[MAX][MAX];
+int visited[MAX];
+int n;
+
+void DFS(int v) {
+    printf("%d ", v);
+    visited[v] = 1;
+    for (int i = 0; i < n; i++) {
+        if (adj[v][i] == 1 && !visited[i]) {
+            DFS(i);
+        }
+    }
+}
+
+int main() {
+    n = 4;
+    int edges[4][2] = {{0, 1}, {0, 2}, {1, 2}, {2, 0}, {2, 3}, {3, 3}};
+    for (int i = 0; i < 4; i++) {
+        adj[edges[i][0]][edges[i][1]] = 1;
+    }
+
+    for (int i = 0; i < n; i++) {
+        visited[i] = 0;
+    }
+
+    printf("Depth First Traversal starting from vertex 2:\n");
+    DFS(2);
+
+    return 0;
+}
+            </code></pre>
+
+            <h3>Breadth-First Search (BFS)</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX 100
+
+int adj[MAX][MAX];
+int visited[MAX];
+int queue[MAX];
+int front = -1, rear = -1;
+int n;
+
+void enqueue(int v) {
+    if (rear == MAX - 1)
+        return;
+    if (front == -1)
+        front = 0;
+    queue[++rear] = v;
+}
+
+int dequeue() {
+    if (front == -1 || front > rear)
+        return -1;
+    return queue[front++];
+}
+
+void BFS(int v) {
+    enqueue(v);
+    visited[v] = 1;
+    while (front <= rear) {
+        v = dequeue();
+        printf("%d ", v);
+        for (int i = 0; i < n; i++) {
+            if (adj[v][i] == 1 && !visited[i]) {
+                enqueue(i);
+                visited[i] = 1;
+            }
+        }
+    }
+}
+
+int main() {
+    n = 4;
+    int edges[4][2] = {{0, 1}, {0, 2}, {1, 2}, {2, 0}, {2, 3}, {3, 3}};
+    for (int i = 0; i < 4; i++) {
+        adj[edges[i][0]][edges[i][1]] = 1;
+    }
+
+    for (int i = 0; i < n; i++) {
+        visited[i] = 0;
+    }
+
+    printf("Breadth First Traversal starting from vertex 2:\n");
+    BFS(2);
+
+    return 0;
+}
+            </code></pre>
+        </section>
+    </main>
+    <footer>
+        <p>&copy;From the internet</p>
+    </footer>
+</div>
+</body>
+</html>
